@@ -15,7 +15,7 @@ describe('define', function () {
     table.columns[0].dataType.should.be.eql('varchar(max)')
 
     table.columns[1].name.should.be.eql('date')
-    table.columns[1].dataType.should.be.eql('datetime')
+    table.columns[1].dataType.should.be.eql('datetime2(2)')
 
     table.columns[2].name.should.be.eql('int')
     table.columns[2].dataType.should.be.eql('integer')
@@ -32,6 +32,6 @@ describe('define', function () {
     var sql = require('sql')
     sql.setDialect('mssql')
 
-    sql.define(def[0]).create().toQuery().text.should.be.eql('CREATE TABLE [UserType] ([_id] varchar(max), [date] datetime, [int] integer, [bool] bit, [address_street] varchar(max))')
+    sql.define(def[0]).create().toQuery().text.should.be.eql('CREATE TABLE [UserType] ([_id] varchar(max), [date] datetime2(2), [int] integer, [bool] bit, [address_street] varchar(max))')
   })
 })
