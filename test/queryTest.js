@@ -32,7 +32,7 @@ describe('query', function () {
 
   it('should support projection', function () {
     query(table, {
-      $select: {'_id': 1}
-    }, 'users', model).text.should.be.eql('SELECT [UserType].[_id] FROM [UserType]')
+      $select: {'int': 1}
+    }, 'users', model).text.should.be.eql('SELECT [UserType].[int] FROM [UserType]')
   })
 })
