@@ -10,7 +10,7 @@ describe('transformer', function () {
   })
 
   it('should create ddl statements', function () {
-    convertor.create()[0].text.should.be.eql("IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'UserType') BEGIN CREATE TABLE [UserType] ([_id] varchar(max), [date] datetime2(2), [int] integer, [bool] bit, [address_street] varchar(max)) END")
+    convertor.create()[0].text.should.be.eql("IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'UserType') BEGIN CREATE TABLE [UserType] ([_id] varchar(max), [date] datetime2(2), [int] integer, [bool] bit, [address_street] varchar(max), [address_number] integer) END")
   })
 
   it('should create insert statements', function () {

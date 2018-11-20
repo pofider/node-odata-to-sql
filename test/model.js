@@ -11,7 +11,8 @@ module.exports = {
   },
   complexTypes: {
     'AddressType': {
-      'street': {'type': 'Edm.String'}
+      'street': {'type': 'Edm.String'},
+      'number': {'type': 'Edm.Int32'}
     }
   },
   entitySets: {

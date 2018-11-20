@@ -35,4 +35,22 @@ describe('query', function () {
       $select: {'int': 1}
     }, 'users', model).text.should.be.eql('SELECT [UserType].[int] FROM [UserType]')
   })
+
+  it('should support projection on complex props', function () {
+    query(table, {
+      $select: {'address': 1}
+    }, 'users', model).text.should.be.eql('SELECT [UserType].[address_street], [UserType].[address_number] FROM [UserType]')
+  })
+
+  it('should support projection on multiple props', function () {
+    query(table, {
+      $select: {int: 1, address: 1}
+    }, 'users', model).text.should.be.eql('SELECT [UserType].[int], [UserType].[address_street], [UserType].[address_number] FROM [UserType]')
+  })
+
+  it('should support filter on complex props', function () {
+    query(table, {
+      $filter: { address: { street: 'foo ' } }
+    }, 'users', model).text.should.be.eql('SELECT [UserType].* FROM [UserType] WHERE ([UserType].[address_street] = @1)')
+  })
 })
