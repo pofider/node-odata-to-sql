@@ -4,8 +4,8 @@
   "description": "Generate SQL from OData in node.js",
   "main": "index.js",
   "dependencies": {
-    "lodash": "4.0.0",
-    "sql": "0.65.0"
+    "lodash": "4.17.5",
+    "sql": "0.78.0"
   },
   "devDependencies": {
     "eslint": "^1.10.3",
