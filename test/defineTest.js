@@ -32,7 +32,7 @@ describe('define', function () {
 
   it('foo', function () {
     var def = define(model, 'mssql', '')
-    var sql = require('sql')
+    var sql = require('node-sql-2')
     sql.setDialect('mssql')
 
     sql.define(def[0]).create().toQuery().text.should.be.eql('CREATE TABLE [UserType] ([_id] varchar(max), [date] datetime2(2), [int] integer, [bool] bit, [address_street] varchar(max), [address_number] integer)')

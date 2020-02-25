@@ -9,7 +9,7 @@ describe('parse', function () {
   })
 
   it('should create parse one', function () {
-    var parsedDoc = parse({_id: 'foo'}, 'users', model)
+    var parsedDoc = parse({ _id: 'foo' }, 'users', model)
     parsedDoc.should.have.property('_id')
     parsedDoc._id.should.be.eql('foo')
 

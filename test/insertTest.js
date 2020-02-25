@@ -11,7 +11,7 @@ describe('insert', function () {
       date: new Date(2012, 1, 1),
       int: 10,
       bool: true,
-      address: {'street': 'street'}
+      address: { street: 'street' }
     }, 'users', model)
 
     doc._id.should.be.eql('foo')

@@ -14,7 +14,7 @@ describe('transformer', function () {
   })
 
   it('should create insert statements', function () {
-    var q = convertor.insert('users', {_id: 'foo'})
+    var q = convertor.insert('users', { _id: 'foo' })
     q.text.should.be.eql('INSERT INTO [UserType] ([_id]) VALUES (@1)')
     q.values.should.have.length(1)
     q.values[0].should.be.eql('foo')
