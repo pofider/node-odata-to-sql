@@ -9,6 +9,7 @@ describe('query', function () {
 
   beforeEach(function () {
     var tables = define(model, 'mssql', '')
+    sql.setDialect('mssql')
     table = sql.define(tables[0])
   })
 

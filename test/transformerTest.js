@@ -2,7 +2,7 @@ require('should')
 var model = require('./model')
 var transformator = require('../index')
 
-describe('transformer', function () {
+describe('transformer msql', function () {
   var convertor
 
   beforeEach(function () {
@@ -16,6 +16,25 @@ describe('transformer', function () {
   it('should create insert statements', function () {
     var q = convertor.insert('users', { _id: 'foo' })
     q.text.should.be.eql('INSERT INTO [UserType] ([_id]) VALUES (@1)')
+    q.values.should.have.length(1)
+    q.values[0].should.be.eql('foo')
+  })
+})
+
+describe('transformer oracle', function () {
+  var convertor
+
+  beforeEach(function () {
+    convertor = transformator(model, 'oracle')
+  })
+
+  it('should create ddl statements', function () {
+    convertor.create()[0].text.should.be.eql('BEGIN EXECUTE IMMEDIATE \'CREATE TABLE "UserType" ("_id" varchar2(4000), "date" timestamp, "int" number, "bool" number(1), "address_street" varchar2(4000), "address_number" number)\'; EXCEPTION WHEN OTHERS THEN IF SQLCODE != -955 THEN RAISE; END IF; END;')
+  })
+
+  it('should create insert statements', function () {
+    var q = convertor.insert('users', { _id: 'foo' })
+    q.text.should.be.eql('INSERT INTO "UserType" ("_id") VALUES (:1)')
     q.values.should.have.length(1)
     q.values[0].should.be.eql('foo')
   })
