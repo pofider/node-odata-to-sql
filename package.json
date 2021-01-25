@@ -4,8 +4,8 @@
   "description": "Generate SQL from OData in node.js",
   "main": "index.js",
   "dependencies": {
-    "lodash": "4.17.15",
-    "jsreport-sql-2": "0.0.1"
+    "jsreport-sql-2": "0.0.1",
+    "lodash": "4.17.15"
   },
   "devDependencies": {
     "eslint": "6.8.0",

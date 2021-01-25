@@ -54,4 +54,16 @@ describe('query', function () {
       $filter: { address: { street: 'foo ' } }
     }, 'users', model).text.should.be.eql('SELECT [UserType].* FROM [UserType] WHERE ([UserType].[address_street] = @1)')
   })
+
+  it('should support is null filters for null', function () {
+    query(table, {
+      $filter: { address: null }
+    }, 'users', model).text.should.be.eql('SELECT [UserType].* FROM [UserType] WHERE (([UserType].[address_street] IS NULL) AND ([UserType].[address_number] IS NULL))')
+  })
+
+  it('should support is null filters for undefined', function () {
+    query(table, {
+      $filter: { address: undefined }
+    }, 'users', model).text.should.be.eql('SELECT [UserType].* FROM [UserType] WHERE (([UserType].[address_street] IS NULL) AND ([UserType].[address_number] IS NULL))')
+  })
 })
