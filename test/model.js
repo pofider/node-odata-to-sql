@@ -11,7 +11,7 @@ module.exports = {
   },
   complexTypes: {
     AddressType: {
-      street: { type: 'Edm.String' },
+      street: { type: 'Edm.String', maxLength: 'max' },
       number: { type: 'Edm.Int32' }
     }
   },

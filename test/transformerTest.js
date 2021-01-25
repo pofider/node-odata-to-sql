@@ -29,7 +29,7 @@ describe('transformer oracle', function () {
   })
 
   it('should create ddl statements', function () {
-    convertor.create()[0].text.should.be.eql('BEGIN EXECUTE IMMEDIATE \'CREATE TABLE "UserType" ("_id" varchar2(4000), "date" timestamp, "int" number, "bool" number(1), "address_street" varchar2(4000), "address_number" number)\'; EXCEPTION WHEN OTHERS THEN IF SQLCODE != -955 THEN RAISE; END IF; END;')
+    convertor.create()[0].text.should.be.eql('BEGIN EXECUTE IMMEDIATE \'CREATE TABLE "UserType" ("_id" varchar2(4000), "date" timestamp, "int" number, "bool" number(1), "address_street" clob, "address_number" number)\'; EXCEPTION WHEN OTHERS THEN IF SQLCODE != -955 THEN RAISE; END IF; END;')
   })
 
   it('should create insert statements', function () {
