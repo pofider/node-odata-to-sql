@@ -1,6 +1,6 @@
 {
   "name": "odata-to-sql",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "Generate SQL from OData in node.js",
   "main": "index.js",
   "dependencies": {
